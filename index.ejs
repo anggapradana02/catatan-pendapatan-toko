@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Catatan Pendapatan Toko</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <h1>Catatan Pendapatan Toko</h1>
+  <form action="/add" method="POST">
+    <input type="date" name="date" required>
+    <input type="text" name="description" placeholder="Deskripsi" required>
+    <input type="number" name="amount" placeholder="Jumlah (Rp)" required>
+    <button type="submit">Tambah</button>
+  </form>
+
+  <h2>Daftar Pendapatan</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Tanggal</th>
+        <th>Deskripsi</th>
+        <th>Jumlah</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% incomeList.forEach(item => { %>
+        <tr>
+          <td><%= item.date %></td>
+          <td><%= item.description %></td>
+          <td>Rp <%= item.amount.toLocaleString() %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+  <h3>Total Pendapatan: Rp <%= total.toLocaleString() %></h3>
+</body>
+</html>
