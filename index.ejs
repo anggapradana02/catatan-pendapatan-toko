@@ -1,39 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Catatan Pendapatan Toko</title>
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
-  <h1>Catatan Pendapatan Toko</h1>
-  <form action="/add" method="POST">
-    <input type="date" name="date" required>
-    <input type="text" name="description" placeholder="Deskripsi" required>
-    <input type="number" name="amount" placeholder="Jumlah (Rp)" required>
-    <button type="submit">Tambah</button>
-  </form>
+  <div class="container">
+    <h1>Catatan Pendapatan Toko</h1>
+    <form action="/tambah" method="POST" class="form">
+      <input type="text" name="tanggal" placeholder="Tanggal (yyyy-mm-dd)" required />
+      <input type="number" name="jumlah" placeholder="Jumlah Pendapatan" required />
+      <button type="submit">Tambah</button>
+    </form>
 
-  <h2>Daftar Pendapatan</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Tanggal</th>
-        <th>Deskripsi</th>
-        <th>Jumlah</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% incomeList.forEach(item => { %>
+    <table>
+      <thead>
         <tr>
-          <td><%= item.date %></td>
-          <td><%= item.description %></td>
-          <td>Rp <%= item.amount.toLocaleString() %></td>
+          <th>Tanggal</th>
+          <th>Jumlah (Rp)</th>
         </tr>
-      <% }) %>
-    </tbody>
-  </table>
-
-  <h3>Total Pendapatan: Rp <%= total.toLocaleString() %></h3>
+      </thead>
+      <tbody>
+        <% pendapatan.forEach(function(item) { %>
+          <tr>
+            <td><%= item.tanggal %></td>
+            <td><%= item.jumlah %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
 </body>
 </html>
